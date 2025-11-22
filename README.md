@@ -86,8 +86,9 @@ Assumed layout:
 └── Eurobot-2026-Navigation2
     ├── src/...
     └── install/...
-
+```
 ### 2. Build the image and start the container
+
 ```
 cd ~/VNC/docker
 docker compose build
