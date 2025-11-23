@@ -12,10 +12,13 @@ chmod 600 "$HOME/.vnc/passwd"
 cat > "$HOME/.vnc/xstartup" << 'EOF'
 #!/bin/sh
 xrdb "$HOME/.Xresources" 2>/dev/null || true
-xterm -geometry 120x40+10+10 -ls -title "VNC Terminal" &
-while true; do
-  sleep 86400
-done
+
+export DESKTOP_SESSION=xfce
+export XDG_CURRENT_DESKTOP=XFCE
+
+# 啟動完整桌面
+startxfce4
+
 EOF
 
 chmod +x "$HOME/.vnc/xstartup"

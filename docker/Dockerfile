@@ -1,13 +1,17 @@
-FROM osrf/ros:humble-deskto
+FROM osrf/ros:humble-desktop
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN apt-get update && \
     apt-get install -y \
+      wget \
+      curl \
       tigervnc-standalone-server \
       xterm \
       dbus-x11 \
+      xfce4 \
+      xfce4-terminal \
       ros-humble-rmw-cyclonedds-cpp \
       sudo \
       ros-humble-navigation2 \
@@ -16,7 +20,7 @@ RUN apt-get update && \
       ros-humble-behaviortree-cpp-v3 \
     && rm -rf /var/lib/apt/lists/*
 
-# 建 user
+# build user
 RUN useradd -m -s /bin/bash user && \
     echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/user
 

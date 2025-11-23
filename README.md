@@ -115,9 +115,57 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 sim
 
-# or using
+# or
 # ros2 launch navigation2_run sim_launch.py
 ```
+
+## 🌳 Install Groot2 Behavior Tree GUI inside VNC
+This image does not preinstall Groot2.
+If you want to visualize Nav2 behavior trees with Groot2, install it inside the running VNC session as follows.
+
+Note: The container is already running as linux/amd64.
+Groot2 is x86_64 only, so this is required on Apple Silicon.
+
+### Step 1: Open a terminal inside VNC
+- Connect to localhost:5901 via VNC (password: ros by default).
+- Use the existing xterm, or open a new terminal from the desktop environment.
+- (Optional) verify architecture:
+```
+uname -m   # should print: x86_64
+```
+
+### Step 2: Download the Groot2 Linux installer and run the installer
+In the VNC terminal:
+```
+cd ~
+wget "https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.6.1-linux-installer.run" \
+    -O Groot2-installer.run
+
+chmod +x Groot2-installer.run
+```
+
+```
+./Groot2-installer.run
+```
+
+```
+~/Groot2/bin/groot2
+```
+### Step 3: Launch Groot2
+In VNC terminal:
+```
+~/Groot2/bin/groot2
+```
+(Optional) add a shell alias so you can just type groot2:
+```
+echo "alias groot2='$HOME/Groot2/bin/groot2'" >> ~/.bashrc
+source ~/.bashrc
+```
+Now you can start Groot2 with:
+```
+groot2
+```
+
 
 ## 🧑‍💻 For Your Own Use: What to Modify
 ### 1. Volume Path in docker-compose.yaml
