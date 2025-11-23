@@ -165,6 +165,9 @@ Now you can start Groot2 with:
 ```
 groot2
 ```
+then load the file from the project
+Zoom in -> swipe left with two fingers
+Zoom out -> swipe right with two fingers
 
 
 ## 🧑‍💻 For Your Own Use: What to Modify
